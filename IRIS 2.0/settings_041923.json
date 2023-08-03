@@ -1,0 +1,598 @@
+/* Pavilion RELEASE v3.2-53 - 09.28.2021 */
+{
+  "acceptableHillromDelay": 30000,
+  "settingsVersion": "3.2-53",                                               // Used by application to determin settings compatibility (major.minor-build). Required field. Build specific.
+  "device": "brightsign",                                                                   // The type of physical device this code is running on. Required field.
+  "room": "1261",                                                                           // The room this device is in. Required field.
+  "department": "FP12",                                                                     // The department this device is in. Required field.
+  "facility": "HUP",                                                                        // The facility this device is in. Required field.
+  "deviceRestfulProtocol": "http://",                                                       // Protocol used by the device for inbound restful traffic ("http://" or "https://"). Required field. Build specific.
+  "networkDomain": "lvi.local",                                                                 // Network domain to which the BrightSign is connected. Required field. Facility specific.
+  "deviceSerial": "D7E98H000881",                                                           // UID or serial number of the BrightSign. Required field. Device specific.
+  "TVURL": "samsung.lvi.local:1515",                                                             // URL of the TV to which this BrightSign connects via sockets. (IP:Port). Required field. Device specific.
+  "EBOURL": "http://PENNFIRST.lvi.local:8084",                                                         // Base URL of EBO for getting or setting values. Required field if EBOActive.
+  "EBOPathURL": "01/EServer 1/lvi/rooms/r1261/rJSON",                                       // Path of this room inside the EBO values endpoint. Device specific.
+  "EBOWaitTime": 15000,                                                                     // Milliseconds the EBO class should wait when an error occors before trying to retrieve a new token. Required field if EBOActive.
+  "diagnosticsKeyPass": "00001234",                                                         // Code entered to launch diagnostics (displayState must be nightState, or sleepState) (also known as night mode and sleep mode). Any 8 digit code using 0-9. Required field.
+  "getEBOTokenURL": "https://whiteboardsettings-test.uphs.upenn.edu/api/ebo-token?serial=D7E91L005389", // URL for retrieval of a new EBO token. Required field if EBOActive.
+  "EISDNS": "http://senodejs.lvi.local:5008",                                               // URL to the EIS Server. Required field if EISActive.
+  "providerAPIURL": "https://whiteboardsettings-test.uphs.upenn.edu/api",                   // Base URL used by the BrightSign to (retrieve an image, name, and title for an employeeID when they walk into the room). Required field.
+  "providerAPIWait": 10000,                                                                 // Milliseconds the Personnel Widget Controller waits between status checks to the API. Required field.
+  "personnelExpiration": 60,                                                                // Seconds that personnel are displayed in the Personnel Widget (can be cut short if more than 4 personnel are added to the display within a rolling 30s time period). Required field.
+  "reorderCardsInterval": 8,                                                                // Ammount of time in seconds it takes for each personnel to move one position. Required field.
+  "processQueueInterval": 0.5,                                                              // Queue interval seconds for processing new personnel entries. This prevents personnel from being added or removed too quickly when multiple staff entry a patient room. Required field.
+  "mediaWidgetBackground": "horizontal_penn_background.png",                                // Image located in hospital/images folder by name and extention for the background of the media widget. Required field.
+  "mediaWidgetCalloutText": true,                                                           // Enables/disables the callout text for the info button in the media widget when activated automatically without the users keypress of the info btn. (Enable only one callout at a time.)
+  "mediaWidgetCalloutPointer": true,                                                        // Enables/disables the callout hand pointer for the info button in the media widget when activated automatically without the users keypress of the info btn. (Enable only one callout at a time.)
+  "thermostatMax": 75,                                                                      // Defines the maximum setpoint to which the thermostat can be set (cannot be more than 7 degrees above the minimum). Required field.
+  "thermostatDefaultSetPoint": 73,                                                          // Default the setpoint for the thermostat (this value should be between the min and max). Required field.
+  "thermostatMin": 68,                                                                      // Defines the minimum setpoint to which the thermostat can be set (cannot be more than 7 degrees below the maximum). Required field.
+  "triplePlayCommandPassthru": true,                                                       // videoSources.triplePlay.enabled must be set to true for this to be able to be set to true. Setting this to true will remove the channelList and channelEntry widgets and will pass all commands for for changing channels to the triplePlay to be processed. Required field if TriplePlay is an enabled videoSource.
+  "EBOActive": true,                                                                        // Set to true if EBO (ecostruxure) is preset in the environment, setting to false does not remove EBO device from the diagnostics (to remove the EBO device from the diagnostics, set this to false and set the isPersistent property of the EBO device in the diagnosticsStructure object below to false). Optional field. (Assumed false if undefined)
+  "EISActive": true,                                                                        // Set to true if EIS (Enterprise Integration Server) is preset in the environment, setting to false does not remove EIS device from the diagnostics (to remove the EIS device from the diagnostics, set this to false and set the isPersistent property of the EIS device in the diagnosticsStructure object below to false). Optional field. (Assumed false if undefined)
+  "extronActive": true,                                                                     // Set to true if Extron (HDMI switcher inbetween the BrightSign and all other HDMI in's to the BrightSign) is preset in the environment, setting to false does not remove Extron device from the diagnostics (to remove the Extron device from the diagnostics, set this to false and set the isPersistent property of the Extron device in the diagnosticsStructure object below to false). Optional field. (Assumed false if undefined)
+  "voiceActive": true,                                                                      // Set to true if voice (Local Amazon Alexa/brightear) is enabled on your device, setting to false does not remove voice device from the diagnostics (to remove the voice device from the diagnostics, set this to false and set the isPersistent property of the voice device in the diagnosticsStructure object below to false). Optional field. (Assumed false if undefined)
+  "SAPActive": true,                                                                        // Set to true if SAP (Second Audio Program) should be enabled (supported settop boxes: triplePlay). This will cause an SAP option in the menu to appear in comboState and fullscreenState for use in selecting an alternate language when avaible. Optional field. (Assumed false if undefined)
+  "elertBellActive": true,                                                                 // Set to true to play a video of a bell when eLert (caregility call) has started, setting it to false causes the video to never be played. Optional field. (Assumed false if undefined)
+  "clinicalPCTime": 30000,                                                                  // Milliseconds to wait before switching the HDMI port on the Samsung TV back to port 1 (BrightSign) from port 2 (clinicalPC) if the clinicalPC does not make anoter restful call to keep the Samsung in port 2 within this time period. Required field.
+  "backlightOn": 85,                                                                        // Defines the brightness of the Samsung monitor when in comboState, fullscreenState, or offState (0-100). Required field.
+  "backlightOff": 0,                                                                        // Defines the brightness of the Samsung monitor when in sleepState (0-100). Required field.
+  "backlightNight": 15,                                                                     // Defines the brightness of the Samsung monitor when in nightState (0-100). Required field.
+  "externalVolumeMaximum": 100,                                                             // Defines the maximum volume of the "external" speaker (pillowspeaker) (0-100). Required field.
+  "externalVolumeBase": 5,                                                                  // Defines the increment by which the volume should increase or decrease when changing the volume of the "external" speaker (pillowspeaker) (0-<Max). Required field.
+  "internalVolumeMaximum": 40,                                                              // Defines the maximum volume of the "internal" speaker (Samsung internal speakers) (1-100). Required field.
+  "internalVolumeBase": 2,                                                                  // Defines the increment by which the volume should increase or decrease when changing the volume of the "internal" speaker (Samsung internal speakers) (0-<Max). Required field.
+  "deviceRestfulServerPort": 3000,                                                          // Defines the port of the restful server in the BrightSign. Required field. 
+  "IPAddressLookupInterval": 30000,                                                         // How often the the network class checks the "IP Address" of this device.(milliseconds) Required field. Build specific.
+  "networkStatusInterval": 30000,                                                           // How often the the network class checks the "network connectivity status" of this device. (milliseconds) Required field. Build specific.
+  "pingServerIPAddress": "struxsrvr.lvi.local",                                                         // IP Address of the server to ping to check "network connectivity status" of this device. Required field. Build specific.
+  "caregilityID": "1798",                                                                  // Defines the caregility id sent by the BrightSign to the EIS server during registration that allows the BrightSign to self register with the EIS server. Required field. Device specific.
+  "hillromID": "PENN.Med Surg.301",                                                         // Defines the hillrom id sent by the BrightSign to the EIS server during registration that allows the BrightSign to self register with the EIS server. Required field. Device specific.
+  "rebootCode": "1397",                                                                     // Code entered to reset the BrightSign from the pillowspeaker by a technition in the room while in diagnostics. (Requires launching diagnostics before the reboot code will be accepted) (4 digit 0-9 code ONLY) Required field.
+  "serialPorts": {                                                                          // Defines which external devices use which serial ports on the BrightSign (0-2). (0=serial RS232, 1=USB-C, 2=USB-A?) Required field.
+    "extron": 0                                                                             // The Extron devices designated serial port (0-2). Required field only if extronActive is true.
+  },
+  "extronPorts" : {                                                                         // Defines external devices plugged into the HDMI ports on the Extron device. (port can be 1-4) Required field if extronActive is true. If true STB, AUX, and caregility (if EIS is present) are all required.
+    "STB": {                                                                                // STB (settop box) displays the TV or channel feed. Required field.
+      "name": "STB",                                                                        // Pretty format of the name of the external device. Required field.
+      "port": 1                                                                             // HDMI port that the external device is connected to on the Extron. Required field.
+    },
+    "AUX": {                                                                                // Auxiliary HDMI port by which any number of devices could be connected. Required field.
+      "name": "Auxiliary",                                                                  // Pretty format of the name of the external device. Required field.
+      "port": 2                                                                             // HDMI port that the external device is connected to on the Extron. Required field.
+    },
+    "caregility": {                                                                         // Caregility HDMI port which displays the care personels video feed on the screen during a eLert call. Required field.
+      "name": "Caregility",                                                                 // Pretty format of the name of the external device. Required field.
+      "port": 3                                                                             // HDMI port that the external device is connected to on the Extron. Required field.
+    }
+  },
+  "defaultChannel": {                                                                       // Defines the default channel that will be set initially and after 10 minutes of inactivity in a displayState where the TV is effectively off (not playing). Optional field.
+    "channel": "35",                                                                         // Defines the channel number (specific to the source/device). Required if default channel specified.
+    "source": "triplePlay"                                                                   // Defines the source of the channel, which could be any of the enabled devices in the videoSources settings object here in this file. Required if default channel specified.
+  },
+  "defaultChannelTimeout": 600000,                                                          // Milliseconds that should pass while in displayStates offState/nightState/sleepState, where the TV is off, before changing the channel to the default channel (done silently while the TV is off). Required field.
+  "blankChannelImage": "../settings/channelImages/blank.png",                               // Defines the default channel image if no channel image is defined. Required field.
+  "videoSources": {                                                                         // Defines the videoSources avaible to the BrightSign these could be a settop box or a IPTV solution etc... Set enabled to true to enable a device to be used for the TV. Set the channelScan to true to allow the BrightSign to get channels from the device and write a channels.json file to the BrightSign with the channels retrieved. Set channelScan to false to prevent a channel scan and insted just use the channels.json file on the BrightSign. Required field.
+    "triplePlay": {                                                                         // Specifies whether a TriplePlay STB is connected to the BrightSign. Optional field.
+      "enabled": true,                                                                     // Specifies whether the connected TriplePlay is enabled. Optional field.
+      "channelScan": true                                                                 // specifies whether the connected TriplePlay will dynamically generate a channels.json each time it is booted. Optional field.
+//    },
+//    "HDHomeRun": {                                                                          // Specifies whether a HDHomeRun STB is connected to the BrightSign. Optional field.
+//      "enabled": true,                                                                      // Specifies whether the connected HDHomeRun is enabled. Optional field.
+//      "channelScan": true                                                                   // specifies whether the connected HDHomeRun will dynamically generate a channels.json each time it is booted. Optional field.
+    }
+  },
+  "triplePlay": {                                                                           // Defines the parameters for an enabled triplePlay settop box. Required if TriplePlay is enabled in videoSources.
+    "IP": "tpsusa-pennhealth-comb1.lvi.local",                                              // Defines the IP of the triplePlay headend system to wich commands are set to control the footwall settop box. Required if TriplePlay is enabled in videoSources. Facility/Department specific.
+    "serial": "TPD111000771",                                                               // Defines the serial of the footwall triplePlay settop box. Required if TriplePlay is enabled in videoSources. Device specific.
+    "clientIDWait": 60000,                                                                  // Milliseconds that the triplePlay class should wait before retrying to retieve the clientID from the triplePlay headend. Required if TriplePlay is enabled in videoSources. Facility/Department specific.
+    "natusVODName": "natus_black1",                                                         // This should be the actual name of the Video On Demand item in the TriplePlay for the Natus Video. Required if TriplePlay is enabled in videoSources. Facility/Department specific.
+    "natusVODDuration": 57,                                                                 // Defines the duration (in seconds) of the Video On Demand item in Tripleplay for the Natus Video 
+    "natusInternalVolume": 35,                                                              // Defines the samsung display's volume level on a Natus event
+    "natusExternalVolume": 100,                                                             // Defines the pillow speaker volume level on a Natus Event
+    "extronSource": "STB"                                                                   // This is the name of the extronSource for the triplePlay. Required if TriplePlay is connected. Required if TriplePlay is enabled in videoSources. Facility/Department specific.
+
+  },
+//  "HDHomeRun": {                                                                            // Defines the parameters for an enabled HDHomeRun settop box. Required if HDHomeRun is enabled in videoSources.
+//    "IP": "hdhomerun.lvi.local",                                                                    // Defines the IP of the HDHomeRun STB to get channels. Required if HDHomeRun is connected. Facility/Department specific.
+//    "statusWait": 60000                                                                     // Milliseconds that the HDHomeRun class should wait between status checks.
+//  },
+  "menu": {                                                                                 // Defines which menu options are visible in the menu. Required field, yet each property is optional assumed false if undefined.
+    "comboState": true,                                                                     // Defines if comboState is visible in the menu. Required field if you want combo state accessible on the menu.
+    "fullscreenState": true,                                                                // Defines if fullscreenState is visible in the menu. Required field if you want fullscreen state accessible on the menu.
+    "nightState": true,                                                                     // Defines if nightState is visible in the menu. Required field if you want night state accessible on the menu.
+    "sleepState": true,                                                                     // Defines if sleepState is visible in the menu. Required field if you want sleep state accessible on the menu.
+    "Thermostat0": true,                                                                    // Defines if the Thermostat EBO widget can be launched from the menu. Required field if you want access to the thermostat via the menu.
+    "weather": true,                                                                        // Defines if weather is visible in the menu. Required field if you want weather accessible via the menu.
+    "aClock": true,
+    "voice": false,                                                                         // Defines if voice is visible in the menu. Required field if you want voice accessible via the menu.
+    "SAP": true,                                                                            // Defines if SAP is visible in the menu. Required field if you want SAP accessible via the menu.
+    "extronSource": true                                                                    // Defines if a switch to AUX port is available via the menu. Required if access to AUX is accessible via the menu.
+  },
+  "digitalWhiteboard": {                                                                    // Defines parameters for the whiteboard. Required and all are subfields are required.
+    "url": "http://whiteboard-test.uphs.upenn.edu/ui/whiteboard/getpageHUP?serial=D7E91L005389",  // URL of the whiteboard with the serial of this device included.
+    "reconnectTimeout": 900000,                                                             // Milliseconds that the BrightSign should wait after disconnection to reattempt to connect the first time.
+    "loadingTimeout": 5000,                                                                 // Milliseconds that the BrightSign should wait for the whiteboard to load before retrying again.
+    "retryInterval": 30000                                                                  // Milliseconds that the BrightSign should wait before each subsequent attempt to reconnect after the first time.
+  },
+  "initialValues": {                                                                        // The initial state of various properties in the json.status.  All subfields are required unless otherwise stated.
+     "displayState": "nightState",                                                           // Valid values "offState", "comboState", "nightState", "sleepState". Optional field. Facility/Department specific.
+     "controlState": "controlStateBase",                                                     // Valid values "controlStateBase", "controlWidgetStateChannelEntry", "controlWidgetStateChannelSelector", "controlWidgetStateCornerText", "controlWidgetStateDiagnostics", "controlWidgetStateLight", "controlWidgetStateMedia" (only if triplePlay video source is enabled), "controlWidgetStateMenu", "controlWidgetStatePrivacyGlass", "controlWidgetStateShade", "controlWidgetStateThermostat", "controlWidgetStateVolume". Optional field. Facility/Department specific.
+    "lastUserSelectedVolumeOutput": "external",                                             // Saves the volume output the user last selected (this is used by the volume controller when internalSpeakers is true) options are ("external"/"internal"). If setting to "internal", internalSpeakers must also be set to true.
+    "internalSpeakers": true,                                                               // Enables/Disables the internal speakers and the new volume widget.
+    "samsungSource": 1,                                                                     // Defines which HDMI port the Samsung TV should be set to. Should not ever be changed. Options are 1/2.
+    "extronSource": "STB",                                                                  // Defines which Extron source (HDMI Port) the Extron device should be set to. Options are "AUX"/"STB" at this time.
+    "lastExtronSource": "STB",                                                              // Defines the previously selected Extron port in order to revert back to this port after a caregility eLert call. Options are "AUX"/"STB" at this time.
+    "weather": false,                                                                        // Enables/Disables the display of the weather in the widget weather. Setting it to true displays the weather in the weather widget if available. Setting it to false displays the logo defined in the weather object in this settings file.
+    "aClock": false,
+    "voice": true,                                                                         // Enables/Disables voice initially. If the voice menu option is hidden from the menu (this is done by setting voice to false in the menu object in this settings file) this setting is permanent and cannot be changed by the user.
+    "volume": {                                                                             // Parameters used to set the volume/mute in the Samsung TV, these properties are for the initial volume/mute state of the application.
+      "external": 35,                                                                       // Defines the initial external speaker (pillowspeaker) volume (0-100).
+      "internal": 0,                                                                        // Defines the initial internal speaker (Samsung TV internal speakers) volume (0-100).
+      "output": "external",                                                                 // Defines the initialy selected speaker output ("external" = pillow speaker, or "internal" = both internal Samsung TV and external pillowspeaker speakers) if set to internal ensure internalSpeakers is also set to true.
+      "mute": false                                                                         // Defines the initial mute state.
+    }
+  },
+  // diagnosticsStructure:
+  // name: display name of the device.
+  // id: id of the device (must be unique).
+  // isPersistent: if true, even IF all a devices connections statuses are --> "isRemovebale: true" the device will be kept on the diagnostics display. (Examples of "isRemovable: true" statuses: Default/Initialized/Disconnected/Unable to connect to API/Not Connected/Connection Not In Use) (All statuses are found in the class diagnostics file)
+  // icon: the image name and extension for the device.
+  // side: where the device should be placed. "center" (for hub only, do not change). "left"/"right" for all other devices.
+  // connections: array of objects each representing a connection toHub/fromHub/biDirectional between the hub and the device.
+    // type: can be any value but specifies the type connection (examples "Serial"/"Network"/"RESTful"/"HDMI" etc...).
+    // id: id of the connection (must be unique).
+    // direction: defines the direction(s) of traffic over the connection line. toHub/fromHub/biDirectional are the only options. "toHub" = from the device to the hub (arrow pointing toward the hub). "fromHub" = from the hub to the device (arrow pointing toward the device). "biDirectional" = to and from the device and hub (arrows pointing both toward the device and the hub).
+    // labels: defines the label for the connection endpoints for the device and hub. Can be any string (examples: "USB-C"/"Network"/"RS232"/"HDMI" etc...).
+  // All the attributes in this structure are required for each device that you want represented in the Diagnostics Page.
+  "diagnosticsStructure": {                                                                 // Defines the structure of the diagnostics such as the hub (this device) and all other external/internal devices/classes.
+    "hub": {                                                                                // Defines the hub in the center of the diagnostics.
+      "name": "Device",
+      "icon": "brightsign.png",
+      "side": "center"
+    },
+    "devices": [                                                                            // Defines the devices on either side of the diagnostics hub.
+      {                                                                                     // Device between the pillowspeaker and the BrightSign/Samsung TV which translates keypresses on the pillowspeaker and routes audio from the Samsung TV to the pillowspeaker.
+        "name": "IBI Device",
+        "id": "IBIDevice",
+        "isPersistent": true,
+        "icon": "ibi_device.png",
+        "side": "left",
+        "connections": [
+          {
+            "type": "Serial",
+            "id": "USB",
+            "direction": "toHub",
+            "labels": {
+              "device": "USB-B",
+              "hub": "USB-C"
+            }
+          }
+        ]
+      },
+      {                                                                                     // Pillow Speaker is the wired remote for the footwall thats in the patient bed.
+        "name": "Environmental Buttons",
+        "id": "pillowSpeaker",
+        "isPersistent": true,
+        "icon": "pillow_speaker.png",
+        "side": "left",
+        "connections": [
+          {
+            "type": "GPIO",
+            "id": "GPIO",
+            "direction": "toHub",
+            "labels": {
+              "device": "Serial Wires",
+              "hub": "GPIO"
+            }
+          }
+        ]
+      },
+      {                                                                                     // Samsung monitor TV device that displays the BrightSigns HDMI out feed on HDMI port 1 of the Samsung TV, and the HDMI port 2 feed of the clinicalPC when its connected.
+        "name": "Monitor",
+        "id": "monitor",
+        "isPersistent": true,
+        "icon": "samsung_monitor.png",
+        "side": "left",
+        "connections": [
+          {
+            "type": "HDMI",
+            "id": "HDMI",
+            "labels": {
+              "device": "HDMI-1 In",
+              "hub": "HDMI Out"
+            },
+            "direction": "fromHub"
+          },
+          {
+            "type": "Network - Socket (for Control)",
+            "id": "socket",
+            "direction": "biDirectional",
+            "labels": {
+              "device": "Network",
+              "hub": "Network"
+            }
+          }
+        ]
+      },
+      {                                                                                     // The Extron sits between the BrightSign and all other HDMI in feeds such as a settop box, auxiliary devices, and the caregility device.
+        "name": "Extron",
+        "id": "extron",
+        "isPersistent": true,
+        "icon": "extron.png",
+        "side": "left",
+        "connections": [
+          {
+            "type": "HDMI",
+            "id": "HDMI",
+            "direction": "toHub",
+            "labels": {
+              "device": "HDMI Out",
+              "hub": "HDMI In"
+            }
+          },
+          {
+            "type": "RS232",
+            "id": "RS232",
+            "labels": {
+              "device": "RS-232 Out",
+              "hub": "RS-232 In"
+            },
+            "direction": "biDirectional"
+          }
+        ]
+      },
+      {                                                                                     // TriplePlay settop box feeds TV channels into the BrightSign via HDMI and has a restful interface for control.
+        "name": "TriplePlay Control Server",
+        "id": "triplePlay",
+        "isPersistent": true,
+        "icon": "TriplePlayServer.png",
+        "scale": 1.2,
+        "side": "left",
+        "connections": [
+          {
+            "type": "Network - RESTful API",
+            "id": "restful",
+            "direction": "fromHub",
+            "labels": {
+              "device": "Network",
+              "hub": "Network"
+            }
+          }
+        ]
+      },
+      {                                                                                     // TriplePlay settop box feeds TV channels into the BrightSign via HDMI and has a restful interface for control.
+        "name": "HDHomeRun",
+        "id": "HDHomeRun",
+        "isPersistent": false,
+        "icon": "HDHomeRun.png",
+        "scale": 1.2,
+        "side": "left",
+        "connections": [
+          {
+            "type": "Network - RESTful API",
+            "id": "restful",
+            "direction": "fromHub",
+            "labels": {
+              "device": "Network",
+              "hub": "Network"
+            }
+          }
+        ]
+      },
+      {                                                                                     // Personnel/provider API is a restful service by the client that allows the BrightSign to get the name, title, and an image for an employeeID that it recieved via an EIS CenTrak event from an excitor in the room when a personnel walks through the rooms door.
+        "name": "Personnel API",
+        "id": "personnelAPI",
+        "isPersistent": true,
+        "icon": "personnel-api.png",
+        "side": "left",
+        "connections": [
+          {
+            "type": "Network - RESTful API",
+            "id": "restful",
+            "labels": {
+              "device": "Network",
+              "hub": "Network"
+            },
+            "direction": "fromHub"
+          }
+        ]
+      },
+      {                                                                                     // This is a class inside the BrightSign that monitors the ethernet network connection to the BrightSign such as IP address and if the ethernet cable is even plugged into the BrightSign.
+        "name": "Local Network",
+        "id": "localNetwork",
+        "isPersistent": true,
+        "icon": "network.png",
+        "side": "right",
+        "connections": [
+          {
+            "type": "Network - Internal",
+            "id": "internal",
+            "labels": {
+              "device": "Network",
+              "hub": "Network"
+            },
+            "direction": "fromHub"
+          }
+        ]
+      },
+      {                                                                                     // NOAA is the National Oceanic and Atmospheric Administration in which the brighsign indirectly gets weather information for the weather widget. Indirectly because the client has created a service which the BrightSign hits to get the lastatest captured result from NOAA. If the line for either the temperatures or the forecast are in a disconnected or error state, this is likely because the date in the response back from the client is outdated. 
+        "name": "NOAA",
+        "id": "NOAA",
+        "isPersistent": true,
+        "icon": "nooa.png",
+        "side": "right",
+        "connections": [
+          {
+            "type": "Network - RESTful Forecast API",
+            "id": "forecast",
+            "labels": {
+              "device": "Network",
+              "hub": "Network"
+            },
+            "direction": "fromHub"
+          },
+          {
+            "type": "Network - RESTful Temperatures API",
+            "id": "temperatures",
+            "labels": {
+              "device": "Network",
+              "hub": "Network"
+            },
+            "direction": "fromHub"
+          }
+        ]
+      },
+      {                                                                                     // The BrightSign hits the settings server with its UID or serial to get the settings at boot, the BrightSign then validates the settings and if they pass the validation the BrightSign overwrites the settings.json file on the SD card for future use incase the BrightSign cannot reach the settings server on a subsequent reboot.
+        "name": "Settings Server",
+        "id": "settingsServer",
+        "isPersistent": true,
+        "icon": "settings_server.png",
+        "side": "right",
+        "connections": [
+          {
+            "type": "Network - RESTful API",
+            "id": "settings",
+            "direction": "fromHub",
+            "labels": {
+              "device": "Network",
+              "hub": "Network"
+            }
+          },
+          {
+            "type": "Network - RESTful API",
+            "id": "EBOToken",
+            "direction": "fromHub",
+            "labels": {
+              "device": "Network",
+              "hub": "Network"
+            }
+          }
+        ]
+      },
+      {                                                                                     // The BrightSign connects to ecoStruxure which is EBO and gets the initial values from it to be used by the various EBO controllers and widgets in the application. Then when a user changes anything in an EBO widget in the BrightSign, the BrightSign then calls ecoStruxure with new values for that EBO device (shades/lights/privacy glass/thermostat etc...).
+        "name": "EcoStruxure",
+        "id": "ecoStruxure",
+        "isPersistent": true,
+        "icon": "ecostruxure.png",
+        "side": "right",
+        "connections": [
+          {
+            "type": "Network - RESTful API",
+            "id": "deviceToEcoStruxure",
+            "direction": "fromHub",
+            "labels": {
+              "device": "Network",
+              "hub": "Network"
+            }
+          },
+          {
+            "type": "Network - RESTful API",
+            "id": "ecoStruxureToDevice",
+            "direction": "toHub",
+            "labels": {
+              "device": "Network",
+              "hub": "Network"
+            }
+          }
+        ]
+      },
+      {                                                                                     // The digital whiteboard is a class that loads an iFrame with the digital whiteboard provided by the client.
+        "name": "Digital Careboard",
+        "id": "digitalWhiteboard",
+        "isPersistent": true,
+        "icon": "digital_whiteboard.png",
+        "side": "right",
+        "connections": [
+          {
+            "type": "Network - WebSockets",
+            "id": "websockets",
+            "direction": "biDirectional",
+            "labels": {
+              "device": "Network",
+              "hub": "Network"
+            }
+          }
+        ]
+      },
+      {                                                                                     // When connected the clinicalPC appears on the diagnostics, this clinicalPC is a PC in the room that a healthcare provider is using to display information to the patient through the clinicalPC designated Samsung HDMI in port 2 on the BrightSign. The Samsung is switched from port 1 to port 2 HDMI in when the clinicalPC connects.
+        "name": "Clinical PC",
+        "id": "clinicalPC",
+        "isPersistent": false,
+        "icon": "clinicalPC.png",
+        "side": "right",
+        "connections": [
+          {
+            "type": "Network - WebSockets",
+            "id": "websockets",
+            "labels": {
+              "device": "Network",
+              "hub": "Network"
+            },
+            "direction": "biDirectional"
+          },
+          {
+            "type": "Network - RESTful",
+            "id": "restful",
+            "labels": {
+              "device": "Network",
+              "hub": "Network"
+            },
+            "direction": "toHub"
+          }
+        ]
+      },
+      {                                                                                     // EIS is the enterprise integration server that sits between many devices and the BrightSign such as caregility, hillrom, and CenTrak at the moment.
+        "name": "EIS",
+        "id": "EIS",
+        "isPersistent": true,
+        "icon": "EIS.png",
+        "side": "right",
+        "connections": [
+          {
+            "type": "Network - RESTful API",
+            "id": "EISToDevice",
+            "labels": {
+              "device": "Network",
+              "hub": "Network"
+            },
+            "direction": "toHub"
+          },
+          {
+            "type": "Network - RESTful API",
+            "id": "deviceToEIS",
+            "labels": {
+              "device": "Network",
+              "hub": "Network"
+            },
+            "direction": "fromHub"
+          }
+        ]
+      },
+      {                                                                                     // The simulator is a Web App used by a technician that connects the BrightSign and gives the technician the ability to press btns on a simulated pillowspeaker and control the BrightSign as well as see the HDMI output of the BrightSign and look at diagnostics from the BrightSign.
+        "name": "Simulator",
+        "id": "simulatorOne",
+        "isPersistent": false,
+        "icon": "simulator.png",
+        "side": "right",
+        "connections": [
+          {
+            "type": "Network - WebSockets",
+            "id": "websockets",
+            "labels": {
+              "device": "Network",
+              "hub": "Network"
+            },
+            "direction": "biDirectional"
+          }
+        ]
+      },
+      {                                                                                     // The simulator is a client used by a technician that connects the BrightSign and gives the technician the ability to press btns on a sim pillowspeaker and control the BrightSign as well as see the HDMI output of the BrightSign and look at diagnostics from the BrightSign.
+        "name": "Simulator",
+        "id": "simulatorTwo",
+        "isPersistent": false,
+        "icon": "simulator.png",
+        "side": "right",
+        "connections": [
+          {
+            "type": "Network - WebSockets",
+            "id": "websockets",
+            "labels": {
+              "device": "Network",
+              "hub": "Network"
+            },
+            "direction": "biDirectional"
+          }
+        ]
+      }
+    ]
+  },
+  "widgetLegends": {                                                                        // Defines if different widgets have a legend widget displayed. Required Section.
+    "menu": false
+  },
+  "weather": {                                                                              // Defines the weather widget related properties. All subfields are required.
+    "location": "Philadelphia",                                                             // The physical location of the device in the world. This is displayed to the user in the weather widget when the weather is shown.
+    "temperaturesURL": "http://whiteboardsettings-test.uphs.upenn.edu/api/weather/temperature?Serial=D7E91L005389&Location=Philadelphia",
+    "forecastURL": "http://whiteboardsettings-test.uphs.upenn.edu/api/weather/forecast?Serial=D7E91L005389&Location=Philadelphia",
+    "logoSmall": "penn-medicine-logo_small.png",                                            // Small version of the client logo displayed under the weather when the weather is being displayed.
+    "logoLarge": "penn-medicine-logo_large.png",                                            // Large version of the client logo displayed when no weather is displayed.
+    "logoBackground": "penn_logo_background.jpg",                                           // Background that displays behind the large client logo.
+    "background": "horizontal_penn_background.png",                                         // Background that displays behind the weather when its being displayed.
+    "queryAfterExpiration": 3000,                                                           // Milliseconds that the BrightSign should wait before trying to query for new weather from the clients server, which gets the weather from NOAA.
+    "queryTimeout": 1000,                                                                   // Miliseconds for the Restful request (for new weather data) to wait before timing out when the clients server is unreachable.
+    "failureRetry": 60000                                                                   // Miliseconds that the BrightSign should wait after an unsuccessful request to the clients server for new weather data.
+  },
+  "logs": {                                                                                 // This object should have in the class names for all JS classes that extend superConsole or console control purposes, setting the "master" = false disables all classes from logging regaurdless of their individual settings. Setting the "master" = true enables any class with their individual setting set to true, to log. All subfields are required.
+    "master": true,
+    "controlLogs": true,
+    "diagnosticsControlConfirm": true,
+    "controlWidgetStateCornerText": true,
+    "controlWidgetStateVolume": true,
+    "controlWidgetStateDiagnostics": true,
+    "controlWidgetStateMedia": true,
+    "diagnosticsConnection": true,
+    "diagnosticsDevice": true,
+    "diagnosticsDirectionalIndicator": true,
+    "diagnosticsStatusIndicator": true,
+    "independentControlStateMessages": true,
+    "independentControlStateVoice": true,
+    "independentControlStatePersonnel": true,
+    "digitalWhiteboardController": true,
+    "voice": true,
+    "triplePlay": true,
+    "diagnostics": true,
+    "display": true,
+    "EBOPavilion": true,
+    "EIS": true,
+    "eventTarget": true,
+    "GPIO": true,
+    "network": true,
+    "processJSON": true,
+    "RESTServer": true,
+    "settingsServer": true,
+    "settingsServerLocation": true,
+    "stateEngineEventTarget": true,
+    "TVControl": true,
+    "extron": true,
+    "personnelCard": true,
+    "personnelWidget": true,
+    "monitoringWidget": true,
+    "closeButtonWidget": true,
+    "cursorWidget": true,
+    "webSocketServer": true,
+    "mediaWidget": true,
+    "cornerTextWidget": true,
+    "volumeWidget": true,
+    "diagnosticsWidget": true,
+    "digitalWhiteboardWidget": true,
+    "logsWidget": true,
+    "menuWidget": true,
+    "messagesWidget": true,
+    "weatherWidget": true,
+    "controlWidgetStateMenu": true,
+    "controlStateBase": true,
+    "IBI_IO": true,
+    "controlConfirm": true,
+    "confirmWidget": true,
+    "controlWidgetStatePrivacyGlass": true,
+    "privacyGlassWidget": true,
+    "controlWidgetStateLight": true,
+    "lightWidget": true,
+    "controlWidgetStateThermostat": true,
+    "thermostatWidget": true,
+    "controlWidgetStateShade": true,
+    "shadeWidget": true,
+    "simulatorSettingsBuilder": true,
+    "voiceWidget": true,
+    "channelSelectorWidget": true,
+    "channelEntryWidget": true,
+    "controlWidgetStateChannelSelector": true,
+    "controlWidgetStateChannelEntry": true,
+    "channelManager": true,
+    "controlWidgetStateSAP": true,
+    "SAPOptionsWidget": true,
+    "childControlLogs": true,
+    "textCalloutWidget": true,
+    "pointerCalloutWidget": true
+  }
+}
